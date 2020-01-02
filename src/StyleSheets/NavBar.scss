@@ -1,0 +1,26 @@
+.primera{
+    background-color: #2d3436;
+    border-bottom: solid 2px #d7182a !important;
+    .navbar-brand:hover{
+        color: #f39c12;
+    }
+    .navbar-brand{
+        color: white;
+    }
+    :hover{
+        text-decoration: unset;
+        color: #f39c12;
+    }
+    a{
+        color: white;
+    }
+}
+
+.navbar-expand{
+    justify-content: unset;
+}
+
+.flex-column{
+    flex-direction: row !important;
+    z-index: 4;
+}
