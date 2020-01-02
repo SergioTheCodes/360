@@ -1,5 +1,5 @@
 import React from 'react'
-import {FeedBack, encuesta, argumentz} from '../../Functions/UserFunctions.js'
+import {Email, FeedBack, encuesta, argumentar} from '../../Functions/UserFunctions.js'
 import '../../StyleSheets/Surveys/Web.scss'
 import {Button, InputGroup, FormControl} from 'react-bootstrap'
 import EmailButton from '../SendEmailButton.js'
@@ -11,14 +11,21 @@ class Web_Form extends React.Component {
         this.state = {
             id: 1,
             nombre: '',
-            pregunta: [],
+            preguntas: [],
             feedback: '',
             arguments: []
         }
         var poll;
         var qualification;
+        this.EnviarMail = this.EnviarMail.bind(this);
         this.choice = this.choice.bind(this);
         this.pollAnswer = this.pollAnswer.bind(this);
+    }
+
+    EnviarMail(){
+        Email().then(response => {
+            console.log('the rock', response.data)
+        })
     }
 
     choice(e){
@@ -35,7 +42,7 @@ class Web_Form extends React.Component {
         }
 
         FeedBack(userFeedback).then(response => {
-            console.log(response.data)
+            console.log(response)
         })
     }
 
@@ -47,14 +54,14 @@ class Web_Form extends React.Component {
             idformulario: this.state.id,
             clasificacion: this.qualification
         }
-        argumentz(objeto).then(response => {
+        argumentar(objeto).then(response => {
             this.setState({arguments: response})
         })
     }
 
     componentDidMount() {
         encuesta(this.state.id).then(response => {
-            this.setState({pregunta: response})
+            this.setState({preguntas: response})
         })
     }
 
@@ -67,8 +74,8 @@ class Web_Form extends React.Component {
                         {
                             this
                                 .state
-                                .pregunta
-                                .map((preguntita) => (<p>{preguntita.pregunta}</p>))
+                                .preguntas
+                                .map((pregunta) => (<p>{pregunta.pregunta}</p>))
                         }
                         <p></p>
                         <ul id="poll">
@@ -116,7 +123,7 @@ class Web_Form extends React.Component {
                     </div>
                 </form>
                 <br></br>
-                <EmailButton></EmailButton>
+                <Button onClick={this.EnviarMail}>SEND</Button>
 
             </form>
         )
