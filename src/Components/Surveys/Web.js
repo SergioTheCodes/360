@@ -13,6 +13,7 @@ class Web_Form extends React.Component {
             nombre: '',
             preguntas: [],
             feedback: '',
+            userFeedback: '',
             arguments: []
         }
         var poll;
@@ -20,11 +21,11 @@ class Web_Form extends React.Component {
         this.EnviarMail = this.EnviarMail.bind(this);
         this.choice = this.choice.bind(this);
         this.pollAnswer = this.pollAnswer.bind(this);
-    }
-
+        this.enviarFeedback = this.enviarFeedback.bind(this);
+}
     EnviarMail(){
         Email().then(response => {
-            console.log('the rock', response.data)
+            console.log(response.data)
         })
     }
 
@@ -34,20 +35,30 @@ class Web_Form extends React.Component {
             var mas = (parseInt(index) + 1)
           this.setState({feedback: mas})  
         }
-        const userFeedback = {
+       const userfeedback = {
             nombre: 'User',
             clasificacion: parseInt(this.qualification),
             argumento: mas,
             respuesta: parseInt(this.poll)
         }
 
-        FeedBack(userFeedback).then(response => {
-            console.log(response)
-        })
+        this.setState({ userFeedback: userfeedback})
+        
+        document.getElementById('enviar').removeAttribute('hidden')
+    }
+
+    enviarFeedback(){
+      FeedBack(this.state.userFeedback).then(response => {
+          document.getElementById('argumentos').setAttribute('hidden', 'true')
+          document.getElementById('enviar').setAttribute('hidden', 'true')
+          var ko = document.querySelector('input[type="checkbox"]').setAttribute('checked', 'false')
+            console.log( ko )
+        })  
     }
 
     pollAnswer(e) {
         e.preventDefault()
+        document.getElementById('argumentos').removeAttribute('hidden')
         this.poll = e.target.textContent
         this.qualification = e.target.value        
         const objeto = {
@@ -69,7 +80,6 @@ class Web_Form extends React.Component {
         return (
             <form >
                 <h4>Web</h4>
-                <form>
                     <div>
                         {
                             this
@@ -110,7 +120,7 @@ class Web_Form extends React.Component {
                                 <Button onClick={this.pollAnswer} value="3">10</Button>
                             </li>
                         </ul>
-                        <ul>
+                        <ul id="argumentos">
                         {this.state.arguments.map((argument, index) => (
                                     <InputGroup>
                                         <InputGroup.Prepend>
@@ -121,9 +131,9 @@ class Web_Form extends React.Component {
                                 ))}
                                 </ul>
                     </div>
-                </form>
                 <br></br>
-                <Button onClick={this.EnviarMail}>SEND</Button>
+                <Button onClick={this.EnviarMail}>Email</Button>
+                <Button id="enviar" onClick={this.enviarFeedback} hidden={true}>Enviar</Button>
 
             </form>
         )

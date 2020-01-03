@@ -18,7 +18,7 @@ class DashBoard extends React.Component {
         }
             SummaryNPS().then(res => {
                 this.setState(
-                    {detractors: res[1].Detractors, passives: res[2].Passives, promoters: res[0].Promoters, nps: res.nps}
+                    {detractors: res[2].Detractors, passives: res[3].Passives, promoters: res[1].Promoters, nps: res[4].Percentage}
                 )
             })
         
