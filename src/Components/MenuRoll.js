@@ -11,7 +11,6 @@ class MenuRoll extends Component {
             <nav id="menuroll">
                 <ul>
                     <Nav.Link href="/DashBoard"><DashboardIcon/><a>Dashboard</a></Nav.Link>
-                    <Nav.Link><PersonIcon /><a>Usuarios</a></Nav.Link>
                     <Nav.Link href="/Surveys"><AssignmentIcon/><a>Encuestas</a></Nav.Link>
                 </ul>
                 

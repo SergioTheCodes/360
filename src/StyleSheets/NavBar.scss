@@ -1,15 +1,18 @@
 .primera{
     background-color: #2d3436;
-    border-bottom: solid 2px #d7182a !important;
+    padding: .1rem 1rem;
     .navbar-brand:hover{
         color: #f39c12;
     }
     .navbar-brand{
         color: white;
+        position: absolute;
+        left: 47%;
+        z-index: 5;
     }
     :hover{
         text-decoration: unset;
-        color: #f39c12;
+        color: #56ee38;
     }
     a{
         color: white;

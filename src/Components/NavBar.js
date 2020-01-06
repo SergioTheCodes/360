@@ -9,13 +9,11 @@ class NavBar extends React.Component {
 
     logOut(e) {
         e.preventDefault()
-        localStorage.removeItem('wootricAuthToken')
         localStorage.removeItem('usertoken')
         this
             .props
             .history
             .push(`/`)
-        console.log("Exitado")
     }
 
     render() {

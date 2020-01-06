@@ -2,7 +2,7 @@ import React from 'react'
 import {Email, FeedBack, encuesta, argumentar} from '../../Functions/UserFunctions.js'
 import '../../StyleSheets/Surveys/Web.scss'
 import {Button, InputGroup, FormControl} from 'react-bootstrap'
-import EmailButton from '../SendEmailButton.js'
+import { notificationEmail } from '../../Functions/DataFunctions.js'
 
 class Web_Form extends React.Component {
 
@@ -14,7 +14,10 @@ class Web_Form extends React.Component {
             preguntas: [],
             feedback: '',
             userFeedback: '',
-            arguments: []
+            mailOptions: '',
+            arguments: [],
+            customtext: '',
+            buy: ''
         }
         var poll;
         var qualification;
@@ -22,10 +25,10 @@ class Web_Form extends React.Component {
         this.choice = this.choice.bind(this);
         this.pollAnswer = this.pollAnswer.bind(this);
         this.enviarFeedback = this.enviarFeedback.bind(this);
-}
-    EnviarMail(){
-        Email().then(response => {
-            console.log(response.data)
+    }
+
+    EnviarMail(){       
+        Email(this.state.mailOptions).then(response => {
         })
     }
 
@@ -47,20 +50,37 @@ class Web_Form extends React.Component {
         document.getElementById('enviar').removeAttribute('hidden')
     }
 
-    enviarFeedback(){
+    enviarFeedback(e){
+        e.preventDefault()
+        const feedbackRequest = {
+            id: this.state.feedback,
+            idformulario: this.state.id,
+            clasificacion: this.qualification
+        }
+        var email;
+        notificationEmail(feedbackRequest).then(ne => {
+        })
+        
       FeedBack(this.state.userFeedback).then(response => {
           document.getElementById('argumentos').setAttribute('hidden', 'true')
           document.getElementById('enviar').setAttribute('hidden', 'true')
-          var ko = document.querySelector('input[type="checkbox"]').setAttribute('checked', 'false')
-            console.log( ko )
-        })  
+        })
+
+        
+        const mailNotification = {
+            html: '<p>Notificaciones NPS TUGO Web</p>',
+            emails: 'quevivaeljarritocafe@yopmail.com'
+        }
+        Email(mailNotification)
+        .then(response => {
+        })
     }
 
     pollAnswer(e) {
         e.preventDefault()
         document.getElementById('argumentos').removeAttribute('hidden')
         this.poll = e.target.textContent
-        this.qualification = e.target.value        
+        this.qualification = parseInt(e.target.value)           
         const objeto = {
             idformulario: this.state.id,
             clasificacion: this.qualification
@@ -71,6 +91,25 @@ class Web_Form extends React.Component {
     }
 
     componentDidMount() {
+        const options ={
+            html: `
+                        <h3>Cuéntanos tu experiencia en nuestra tienda online tugo.co</h3> 
+                        <p>Hola
+
+                        Tu experiencia es muy importante para nosotros. Por eso, queremos saber cómo
+                        te fue con tu compra realizada del día por nuestra tienda online tugo.co.
+                        Ayúdanos a mejorar solamente con dos preguntas haciendo click <a>aquí</a>:
+                        Equipo Servicio al Cliente
+                        Tugó Diseño para todos.</p>
+                        <br></br>
+                        <p>Para más información no dudes en contactarnos a través de nuestro correo
+                        electrónico ventasweb@tugo.com.co</p>
+                        <p>Gracias por tu tiempo<p>
+                        `,
+            emails: 'sergioesteban2049@gmail.com'
+                };
+        this.setState({mailOptions: options})
+
         encuesta(this.state.id).then(response => {
             this.setState({preguntas: response})
         })
@@ -78,16 +117,14 @@ class Web_Form extends React.Component {
 
     render() {
         return (
-            <form >
-                <h4>Web</h4>
+            <form>
                     <div>
                         {
                             this
                                 .state
                                 .preguntas
                                 .map((pregunta) => (<p>{pregunta.pregunta}</p>))
-                        }
-                        <p></p>
+                        }                        
                         <ul id="poll">
                             <li>
                                 <Button onClick={this.pollAnswer} value="1">1</Button>
@@ -121,6 +158,34 @@ class Web_Form extends React.Component {
                             </li>
                         </ul>
                         <ul id="argumentos">
+                            {
+                            this.state.preguntas.map(avisos => { 
+                                if(this.poll <= 6)
+                                    return(
+                                        <p>{avisos.textoClasificacion1}</p>
+                                    )
+                            }) 
+                        }
+                        {
+                            this.state.preguntas.map(avisos => {
+                                if(this.poll == 7)
+                                    return(
+                                        <p>{avisos.textoClasificacion2}</p>
+                                    )    
+                                if(this.poll == 8)
+                                    return(
+                                        <p>{avisos.textoClasificacion2}</p>
+                                    )
+                            }) 
+                        }
+                        {
+                            this.state.preguntas.map(avisos => {
+                                if(this.poll >= 9)
+                                    return(
+                                        <p>{avisos.textoClasificacion3}</p>
+                                    )
+                            }) 
+                        }
                         {this.state.arguments.map((argument, index) => (
                                     <InputGroup>
                                         <InputGroup.Prepend>

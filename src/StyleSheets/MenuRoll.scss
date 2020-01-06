@@ -8,29 +8,28 @@
 
 #menuroll ul a:hover{
     border: solid white;
-    background: #ffaf40;
     color: white;
     font-family: helvetica;
 }
 
 #menuroll{
     position: absolute;
-    top: 74px;
+    // top: 74px;
     width: 4em;
     height: 100vh;
     background: #2D3E50;
     transition: all 500ms cubic-bezier(1,0,0,1);
     transition-timing-function: cubic-bezier(1,0,0,1);
     overflow: hidden;
-    z-index: 2;
-    background-color: #f39c12;
+    z-index: 1;
+    background-color: aliceblue;
+    border-right: solid 1px black;
 }
 
 #menuroll ul{
     text-align: center;
     padding: 0px;
     margin-top: 4em;
-    border-bottom: solid 3px black;
 }
 
 #menuroll li{

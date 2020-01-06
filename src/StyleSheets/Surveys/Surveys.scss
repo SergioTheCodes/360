@@ -1,20 +1,27 @@
-#rush{
-    width: 212px
+.form-control{
+    font-size: 0.9rem;
 }
 
 .makeStyles-root-1{
     margin-left: 4em;
-    height: 100vh !important
+    width: 100% !important;
+    height: 100%  !important
+}
+
+.MuiAppBar-root{
+    z-index: 0 !important;
 }
 
 .container{
     margin-right: 0;
     margin-left: 0;
+    width: 100% !important;
+    max-width: 1285px;
+    padding-right: 0px;
     padding-left: unset
 }
 
 button{
     border-color: black;
     background-color: transparent;
-    border-radius: 50%
 }

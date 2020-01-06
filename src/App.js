@@ -43,7 +43,7 @@ function App(props) {
                     
                 </div>
                 <Route exact="exact" path="/" component={Home}/>
-                <Footer></Footer>
+                <Footer />
             </div>
         </Router>
     );

@@ -1,5 +1,4 @@
 import React from 'react'
-import EmailButton from '../SendEmailButton'
 
 function NoGarantias() {
     return (
@@ -8,7 +7,7 @@ function NoGarantias() {
             
             <br></br>
             <br></br>
-            <EmailButton></EmailButton>
+            
         </form>
     );
 }

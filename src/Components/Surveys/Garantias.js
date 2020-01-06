@@ -1,5 +1,4 @@
 import React from 'react'
-import EmailButton from '../SendEmailButton.js'
 
 function Garantias() {
     return (
@@ -7,7 +6,6 @@ function Garantias() {
             <h4>Garantias</h4>
             
             <br></br>
-            <EmailButton></EmailButton>
         </form>
     );
 }

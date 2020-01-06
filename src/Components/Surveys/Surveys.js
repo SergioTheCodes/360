@@ -9,7 +9,9 @@ import Transporteyarmado from '../Surveys/Transporte&Armado.js'
 import Web from '../Surveys/Web.js'
 import '../../StyleSheets/Surveys/Surveys.scss'
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import SwipeableViews from 'react-swipeable-views';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
@@ -23,8 +25,8 @@ function TabPanel(props) {
         component="div"
         role="tabpanel"
         hidden={value !== index}
-        id={`vertical-tabpanel-${index}`}
-        aria-labelledby={`vertical-tab-${index}`}
+        id={`full-width-tabpanel-${index}`}
+        aria-labelledby={`full-width-tab-${index}`}
         {...other}
       >
         {value === index && <Box p={3}>{children}</Box>}
@@ -40,8 +42,8 @@ function TabPanel(props) {
   
   function a11yProps(index) {
     return {
-      id: `vertical-tab-${index}`,
-      'aria-controls': `vertical-tabpanel-${index}`,
+      id: `full-width-tab-${index}`,
+      'aria-controls': `full-width-tabpanel-${index}`,
     };
   }
   
@@ -49,34 +51,40 @@ function TabPanel(props) {
     root: {
       flexGrow: 1,
       backgroundColor: theme.palette.background.paper,
-      display: 'flex',
-      height: 224,
+      width: 500,
     },
     tabs: {
       borderRight: `1px solid ${theme.palette.divider}`,
     },
   }));
   
-  export default function VerticalTabs() {
+  export default function FullWidthTabs() {
     const classes = useStyles();
+    const theme = useTheme();
     const [value, setValue] = React.useState(0);
   
     const handleChange = (event, newValue) => {
       setValue(newValue);
     };
+
+    const handleChangeIndex = index => {
+      setValue(index)
+    }
     
     return (
       <div>
         <MenuRoll />
       <div className={classes.root}>
+        <AppBar position="static" color="default">
         <Tabs
         id="rush"
-          orientation="vertical"
-          variant="scrollable"
+          variant="fullWidth"
           value={value}
           onChange={handleChange}
           aria-label="Vertical tabs example"
           className={classes.tabs}
+          textColor="primary"
+          indicatorColor="primary"
         >
           <Tab label="Web" {...a11yProps(0)} />
           <Tab label="Tienda" {...a11yProps(1)} />
@@ -86,6 +94,12 @@ function TabPanel(props) {
           <Tab label="Garantias" {...a11yProps(5)} />
           <Tab label="NoGarantias" {...a11yProps(6)} />
         </Tabs>
+        </AppBar>
+        <SwipeableViews
+          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+          index={value}
+          onChangeIndex={handleChangeIndex}
+          >
         <TabPanel value={value} index={0}>
           <Web />
         </TabPanel>
@@ -107,6 +121,7 @@ function TabPanel(props) {
         <TabPanel value={value} index={6}>
           <NoGarantias />
         </TabPanel>
+        </SwipeableViews>
       </div>
       </div>
     );

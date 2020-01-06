@@ -1,10 +1,10 @@
 import axios from 'axios'
-import oauth from 'axios-oauth-client'
 
 export const Email = mailOptions => {
   return axios
   .post('http://localhost:5000/nps/send',{
-
+    html: mailOptions.html,
+    emails: mailOptions.emails
   }).then(response => {
     return response
   })
@@ -21,8 +21,6 @@ export const FeedBack = userFeedback => {
     return response.data
   })
 }
-
-
 
 export const encuesta = id => {
   return axios
@@ -45,7 +43,6 @@ export const register = user => {
       rol: user.rol
     })
     .then(response => {
-      console.log('Registered')
       return response.data
     })
 }

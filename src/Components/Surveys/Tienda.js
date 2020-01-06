@@ -1,6 +1,5 @@
 import React from 'react'
 import {Email, FeedBack, encuesta, argumentar} from '../../Functions/UserFunctions.js'
-import EmailButton from '../SendEmailButton.js'
 import '../../StyleSheets/Surveys/Tienda.scss'
 import {Button, InputGroup, FormControl} from 'react-bootstrap'
 

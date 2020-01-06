@@ -4,6 +4,7 @@ button{
 li{
     display: inline-block;
     button{
-        border-radius: 50% !important
+        background-color: transparent !important;
+        color: navy !important;
     }
 }
