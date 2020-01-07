@@ -94,9 +94,8 @@ class Transporte extends React.Component {
 
     componentDidMount() {
         const options ={
-            html: `
-                        <h3>¿Cómo fue tu experiencia con la llegada del producto?</h3> 
-                        <p>Hola</p>
+            subject: '¿Cómo fue tu experiencia con la llegada del producto?',
+            html: `     <p>Hola</p>
 
                         Para nosotros cada contacto con nuestros clientes es muy importante. Por eso,
                         queremos saber cómo te fue con el servicio de entrega del producto. Ayúdanos a

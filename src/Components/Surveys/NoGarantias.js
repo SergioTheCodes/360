@@ -94,9 +94,8 @@ class NoGarantias extends React.Component {
 
     componentDidMount() {
         const options ={
-            html: `
-                        <h3>¿Cómo fue tu experiencia con la solicitud de garantías de Tugó?</h3> 
-                        <p>Hola</p>
+            subject: '¿Cómo fue tu experiencia con la solicitud de garantías de Tugó?', 
+            html: `     <p>Hola</p>
 
                         En esta ocasión lamentablemente no logramos otorgar la garantía que solicitaste
                         en razón de la respuesta que te brindamos. Tu opinión es muy importante para

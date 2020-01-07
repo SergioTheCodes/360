@@ -4,6 +4,7 @@ export const Email = mailOptions => {
   return axios
   .post('http://localhost:5000/nps/send',{
     html: mailOptions.html,
+    subject: mailOptions.subject,
     emails: mailOptions.emails
   }).then(response => {
     return response

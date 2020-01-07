@@ -98,8 +98,8 @@ class Web_Form extends React.Component {
 
     componentDidMount() {
         const options ={
-            html: `
-                        <h3>Cuéntanos tu experiencia en nuestra tienda online tugo.co</h3> 
+            subject: 'Cuéntanos tu experiencia en nuestra tienda online tugo.co',
+            html: ` 
                         <p>Hola</p>
 
                         Tu experiencia es muy importante para nosotros. Por eso, queremos saber cómo

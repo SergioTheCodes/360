@@ -94,9 +94,8 @@ class Garantias extends React.Component {
 
     componentDidMount() {
         const options ={
-            html: `
-                        <h3>¿Cómo fue tu experiencia con la solicitud de garantías de Tugó?</h3> 
-                        <p>Hola</p>
+            subject: '¿Cómo fue tu experiencia con la solicitud de garantías de Tugó?', 
+            html: `     <p>Hola</p>
 
                         Para nosotros cada contacto con nuestros clientes es muy importante. Por eso,
                         queremos saber cómo te fue tu experiencia con el servicio de respuesta a

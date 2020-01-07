@@ -94,9 +94,8 @@ class Tienda_Form extends React.Component {
 
     componentDidMount() {
         const options ={
-            html: `
-                        <h3>Cuéntanos sobre tu experiencia en tiendas Tugó.</h3> 
-                        <p>Hola</p>
+            subject: 'Cuéntanos sobre tu experiencia en tiendas Tugó.',
+            html: `     <p>Hola</p>
 
                         Tu experiencia es muy importante para nosotros. Por eso, queremos saber cómo
                         te fue con tu compra realizada del día por nuestra tienda Tugo Chia.

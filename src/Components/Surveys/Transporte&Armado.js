@@ -94,13 +94,12 @@ class Transporte_y_Armado extends React.Component {
 
     componentDidMount() {
         const options ={
-            html: `
-                        <h3>¿Cómo fue tu experiencia con la llegada y el armado del producto?</h3> 
-                        <p>Hola</p>
+            subject: '¿Cómo fue tu experiencia con la llegada y el armado del producto?',
+            html: `     <p>Hola</p>
 
                         Para nosotros cada contacto con nuestros clientes es muy importante. Por eso,
                         queremos saber cómo te fue con el servicio de entrega y armado del producto.
-                        Ayúdanos a mejorar solamente con dos preguntas haciendo click <a href="http://localhost:3000/TransporteyArmado>aquí:</a>
+                        Ayúdanos a mejorar solamente con dos preguntas haciendo click <a href="http://localhost:3000/TransporteyArmado">aquí:</a>
                         <p>Equipo Servicio al Cliente
                         <br>
                         Tugó Diseño para todos.</p>
