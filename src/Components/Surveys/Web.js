@@ -113,7 +113,7 @@ class Web_Form extends React.Component {
                         electrónico ventasweb@tugo.com.co</p>
                         <p>Gracias por tu tiempo<p>
                         `,
-            emails: ['sergioesteban2049@gmail.com','paola.quiroga@complemento360.com']
+            emails: 'sergioesteban2049@gmail.com'
                 };
         this.setState({mailOptions: options})
 
