@@ -38,8 +38,8 @@ class Web_Form extends React.Component {
             var mas = (parseInt(index) + 1)
           this.setState({feedback: mas})  
         }
+        console.log(this.state.arguments.length)
         if(mas = this.state.arguments.length){
-            document.getElementById("argumentos").hidden = true
             document.getElementById("textarea").removeAttribute("hidden")
         }
        const userfeedback = {
@@ -113,7 +113,7 @@ class Web_Form extends React.Component {
                         electrónico ventasweb@tugo.com.co</p>
                         <p>Gracias por tu tiempo<p>
                         `,
-            emails: 'sergioesteban2049@gmail.com'
+            emails: ['sergioesteban2049@gmail.com','paola.quiroga@complemento360.com']
                 };
         this.setState({mailOptions: options})
 
