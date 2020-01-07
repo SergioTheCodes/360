@@ -19,19 +19,20 @@ class NavBar extends React.Component {
     render() {
         const IndexLinks = (
             <Navbar  className="flex-column primera">
-                <Nav.Link href="/SignUp">Register</Nav.Link>
+                <Nav.Link id="one" href="/SignUp">Register</Nav.Link>
                 <Nav.Link href="/Login">Login</Nav.Link>
             </Navbar>
         )
 
         const UserLinks = (
             <Navbar  className="flex-column">
+                <Nav.Link id="one" href="/DashBoard">Dashboard</Nav.Link>
                 <a
                     href="/"
                     onClick={this
                         .logOut
                         .bind(this)}>Logout</a>
-                        <Nav.Link href="/DashBoard">Dashboard</Nav.Link>
+                        
             </Navbar>
         )
         return (

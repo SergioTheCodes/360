@@ -1,31 +1,34 @@
 import React from 'react'
+import { notificationEmail } from '../../Functions/DataFunctions.js'
 import {Email, FeedBack, encuesta, argumentar} from '../../Functions/UserFunctions.js'
 import '../../StyleSheets/Surveys/Tienda.scss'
 import {Button, InputGroup, FormControl} from 'react-bootstrap'
 
 class Tienda_Form extends React.Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            email: '',
             id: 2,
-            arguments: [],
-            feedback: [],
+            nombre: '',
             preguntas: [],
-            users: []
+            feedback: '',
+            userFeedback: '',
+            mailOptions: '',
+            arguments: [],
+            customtext: '',
+            buy: ''
         }
         var poll;
         var qualification;
         this.EnviarMail = this.EnviarMail.bind(this);
         this.choice = this.choice.bind(this);
         this.pollAnswer = this.pollAnswer.bind(this);
-
+        this.enviarFeedback = this.enviarFeedback.bind(this);
     }
 
-    EnviarMail(){
-        Email().then(response => {
-            console.log('the rock', response.data)
+    EnviarMail(){       
+        Email(this.state.mailOptions).then(response => {
         })
     }
 
@@ -35,22 +38,51 @@ class Tienda_Form extends React.Component {
             var mas = (parseInt(index) + 1)
           this.setState({feedback: mas})  
         }
-        const userFeedback = {
+       const userfeedback = {
             nombre: 'User',
             clasificacion: parseInt(this.qualification),
             argumento: mas,
             respuesta: parseInt(this.poll)
         }
 
-        FeedBack(userFeedback).then(response => {
-            console.log(response)
+        this.setState({ userFeedback: userfeedback})
+        
+        document.getElementById('enviar').removeAttribute('hidden')
+    }
+
+    enviarFeedback(e){
+        e.preventDefault()
+        const feedbackRequest = {
+            id: this.state.feedback,
+            idformulario: this.state.id,
+            clasificacion: this.qualification
+        }
+        var email;
+        notificationEmail(feedbackRequest).then(ne => {
+            email = ne.data;
+            console.log(email)
+        })
+        
+      FeedBack(this.state.userFeedback).then(response => {
+          document.getElementById('argumentos').setAttribute('hidden', 'true')
+          document.getElementById('enviar').setAttribute('hidden', 'true')
+        })
+
+        
+        const mailNotification = {
+            html: '<p>Notificaciones NPS TUGO Web</p>',
+            emails: email
+        }
+        Email(mailNotification)
+        .then(response => {
         })
     }
 
     pollAnswer(e) {
         e.preventDefault()
+        document.getElementById('argumentos').removeAttribute('hidden')
         this.poll = e.target.textContent
-        this.qualification = e.target.value        
+        this.qualification = parseInt(e.target.value)           
         const objeto = {
             idformulario: this.state.id,
             clasificacion: this.qualification
@@ -61,6 +93,26 @@ class Tienda_Form extends React.Component {
     }
 
     componentDidMount() {
+        const options ={
+            html: `
+                        <h3>Cuéntanos tu experiencia en nuestra tienda online tugo.co</h3> 
+                        <p>Hola</p>
+
+                        Tu experiencia es muy importante para nosotros. Por eso, queremos saber cómo
+                        te fue con tu compra realizada del día por nuestra tienda online tugo.co.
+                        Ayúdanos a mejorar solamente con dos preguntas haciendo click <a href="http://localhost:3000/Tienda">aquí</a>:
+                        <p>Equipo Servicio al Cliente
+                        <br>
+                        Tugó Diseño para todos.</p>
+                        <br></br>
+                        <p>Para más información no dudes en contactarnos a través de nuestro correo
+                        electrónico ventasweb@tugo.com.co</p>
+                        <p>Gracias por tu tiempo<p>
+                        `,
+            emails: 'sergioesteban2049@gmail.com'
+                };
+        this.setState({mailOptions: options})
+
         encuesta(this.state.id).then(response => {
             this.setState({preguntas: response})
         })
@@ -68,17 +120,14 @@ class Tienda_Form extends React.Component {
 
     render() {
         return (
-            <form >
-                <h4>Tienda</h4>
-                <form>
+            <form>
                     <div>
                         {
                             this
                                 .state
                                 .preguntas
                                 .map((pregunta) => (<p>{pregunta.pregunta}</p>))
-                        }
-                        <p></p>
+                        }                        
                         <ul id="poll">
                             <li>
                                 <Button onClick={this.pollAnswer} value="1">1</Button>
@@ -111,7 +160,35 @@ class Tienda_Form extends React.Component {
                                 <Button onClick={this.pollAnswer} value="3">10</Button>
                             </li>
                         </ul>
-                        <ul>
+                        <ul id="argumentos">
+                            {
+                            this.state.preguntas.map(avisos => { 
+                                if(this.poll <= 6)
+                                    return(
+                                        <p>{avisos.textoClasificacion1}</p>
+                                    )
+                            }) 
+                        }
+                        {
+                            this.state.preguntas.map(avisos => {
+                                if(this.poll == 7)
+                                    return(
+                                        <p>{avisos.textoClasificacion2}</p>
+                                    )    
+                                if(this.poll == 8)
+                                    return(
+                                        <p>{avisos.textoClasificacion2}</p>
+                                    )
+                            }) 
+                        }
+                        {
+                            this.state.preguntas.map(avisos => {
+                                if(this.poll >= 9)
+                                    return(
+                                        <p>{avisos.textoClasificacion3}</p>
+                                    )
+                            }) 
+                        }
                         {this.state.arguments.map((argument, index) => (
                                     <InputGroup>
                                         <InputGroup.Prepend>
@@ -122,9 +199,9 @@ class Tienda_Form extends React.Component {
                                 ))}
                                 </ul>
                     </div>
-                </form>
                 <br></br>
-                <Button onClick={this.EnviarMail}>SEND</Button>
+                <Button onClick={this.EnviarMail}>Email</Button>
+                <Button id="enviar" onClick={this.enviarFeedback} hidden={true}>Enviar</Button>
 
             </form>
         )

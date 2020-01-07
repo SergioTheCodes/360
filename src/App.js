@@ -8,7 +8,6 @@ import Tienda from './Components/Surveys/Tienda.js'
 import Transporte from './Components/Surveys/Transporte.js'
 import Transporte_y_Armado from './Components/Surveys/Transporte&Armado.js'
 import Web from './Components/Surveys/Web.js'
-import Footer from './Components/Footer'
 import './App.css'
 import NavBar from './Components/NavBar'
 import Dashboard from './Components/DashBoard'
@@ -34,7 +33,7 @@ function App(props) {
                     <Route exact="exact" path="/Login" component={Login}/>
                     <Route exact="exact" path="/Surveys" component={Surveys}/>
                     <Route exact="exact" path="/Web" component={Web}/>
-                    <Route exact="exact" path="Armado" component={Armado}/>
+                    <Route exact="exact" path="/Armado" component={Armado}/>
                     <Route exact="exact" path="/Garantias" component={Garantias}/>
                     <Route exact="exact" path="/NoGarantias" component={NoGarantias}/>
                     <Route exact="exact" path="/Tienda" component={Tienda}/>
@@ -42,8 +41,7 @@ function App(props) {
                     <Route exact="exact" path="/TransporteyArmado" component={Transporte_y_Armado}/>
                     
                 </div>
-                <Route exact="exact" path="/" component={Home}/>
-                <Footer />
+                <Route exact="exact" path="/" component={Home}/>                
             </div>
         </Router>
     );

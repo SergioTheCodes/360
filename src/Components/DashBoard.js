@@ -100,11 +100,12 @@ class DashBoard extends React.Component {
                     width: "max-content"
                 }}>
                 <MenuRoll/>
-                <section>
+                <aside>
                     <div id="pie"></div>
-                </section>
+                    </aside>    
                 <section className="NPS">
-                    <Card>
+                    
+                <Card>
                         <Card.Body>
                             <Card.Title>Detractors</Card.Title>
                             {this.state.detractors}

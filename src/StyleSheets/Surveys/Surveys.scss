@@ -1,9 +1,25 @@
+.MuiTab-root{
+    font-size: 0.72rem !important;
+}
+
+.MuiTabs-root{
+    height: 2.72rem !important;
+    min-height: 0px !important;
+    div{
+        div{
+            button{
+                height: 2.72em !important;
+            }
+        }
+    }
+}
+
 .form-control{
     font-size: 0.9rem;
 }
 
 .makeStyles-root-1{
-    margin-left: 4em;
+    margin-left: 3em;
     width: 100% !important;
     height: 100%  !important
 }
@@ -16,7 +32,7 @@
     margin-right: 0;
     margin-left: 0;
     width: 100% !important;
-    max-width: 1285px;
+    max-width: 1299px;
     padding-right: 0px;
     padding-left: unset
 }

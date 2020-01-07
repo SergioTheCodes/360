@@ -35,7 +35,7 @@ class SignUp extends React.Component{
 
     render(){
         return(
-            <div>
+            <div id="signup">
                 <h2>Sign Up</h2>
                 <Form noValidate onSubmit={this.onSubmit}>
                     <Form.Group controlId="formBasicEmail">

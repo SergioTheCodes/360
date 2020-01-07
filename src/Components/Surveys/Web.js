@@ -38,6 +38,10 @@ class Web_Form extends React.Component {
             var mas = (parseInt(index) + 1)
           this.setState({feedback: mas})  
         }
+        if(mas = this.state.arguments.length){
+            document.getElementById("argumentos").hidden = true
+            document.getElementById("textarea").removeAttribute("hidden")
+        }
        const userfeedback = {
             nombre: 'User',
             clasificacion: parseInt(this.qualification),
@@ -59,6 +63,8 @@ class Web_Form extends React.Component {
         }
         var email;
         notificationEmail(feedbackRequest).then(ne => {
+            email = ne.data;
+            console.log(email)
         })
         
       FeedBack(this.state.userFeedback).then(response => {
@@ -69,7 +75,7 @@ class Web_Form extends React.Component {
         
         const mailNotification = {
             html: '<p>Notificaciones NPS TUGO Web</p>',
-            emails: 'quevivaeljarritocafe@yopmail.com'
+            emails: email
         }
         Email(mailNotification)
         .then(response => {
@@ -94,12 +100,13 @@ class Web_Form extends React.Component {
         const options ={
             html: `
                         <h3>Cuéntanos tu experiencia en nuestra tienda online tugo.co</h3> 
-                        <p>Hola
+                        <p>Hola</p>
 
                         Tu experiencia es muy importante para nosotros. Por eso, queremos saber cómo
                         te fue con tu compra realizada del día por nuestra tienda online tugo.co.
-                        Ayúdanos a mejorar solamente con dos preguntas haciendo click <a>aquí</a>:
-                        Equipo Servicio al Cliente
+                        Ayúdanos a mejorar solamente con dos preguntas haciendo click <a href="http://localhost:3000/Web">aquí</a>:
+                        <p>Equipo Servicio al Cliente
+                        <br>
                         Tugó Diseño para todos.</p>
                         <br></br>
                         <p>Para más información no dudes en contactarnos a través de nuestro correo
@@ -157,6 +164,7 @@ class Web_Form extends React.Component {
                                 <Button onClick={this.pollAnswer} value="3">10</Button>
                             </li>
                         </ul>
+                        <textarea id="textarea" hidden></textarea>
                         <ul id="argumentos">
                             {
                             this.state.preguntas.map(avisos => { 

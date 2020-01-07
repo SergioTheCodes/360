@@ -9,11 +9,13 @@
   }
 .NPS{
     display: unset;
-    overflow-x: scroll;
+    overflow-x: hidden;
     width: 36em;
 }
 #pie{
+    background-color: transparent;
     height: 400px;
     margin: 0 auto;
-}        
+}  
+      
    
