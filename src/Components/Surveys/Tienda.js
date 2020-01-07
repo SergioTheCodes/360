@@ -95,18 +95,18 @@ class Tienda_Form extends React.Component {
     componentDidMount() {
         const options ={
             html: `
-                        <h3>Cuéntanos tu experiencia en nuestra tienda online tugo.co</h3> 
+                        <h3>Cuéntanos sobre tu experiencia en tiendas Tugó.</h3> 
                         <p>Hola</p>
 
                         Tu experiencia es muy importante para nosotros. Por eso, queremos saber cómo
-                        te fue con tu compra realizada del día por nuestra tienda online tugo.co.
+                        te fue con tu compra realizada del día por nuestra tienda Tugo Chia.
                         Ayúdanos a mejorar solamente con dos preguntas haciendo click <a href="http://localhost:3000/Tienda">aquí</a>:
                         <p>Equipo Servicio al Cliente
                         <br>
                         Tugó Diseño para todos.</p>
                         <br></br>
-                        <p>Para más información no dudes en contactarnos a través de nuestro correo
-                        electrónico ventasweb@tugo.com.co</p>
+                        <p>Cualquier inquietud que tengas cuéntanos a través de nuestra página
+                        www.tugo.co en la sección Contáctanos.</p>
                         <p>Gracias por tu tiempo<p>
                         `,
             emails: 'sergioesteban2049@gmail.com'

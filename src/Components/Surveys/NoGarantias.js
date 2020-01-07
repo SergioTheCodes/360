@@ -95,18 +95,24 @@ class NoGarantias extends React.Component {
     componentDidMount() {
         const options ={
             html: `
-                        <h3>Cuéntanos tu experiencia en nuestra tienda online tugo.co</h3> 
+                        <h3>¿Cómo fue tu experiencia con la solicitud de garantías de Tugó?</h3> 
                         <p>Hola</p>
 
-                        Tu experiencia es muy importante para nosotros. Por eso, queremos saber cómo
-                        te fue con tu compra realizada del día por nuestra tienda online tugo.co.
-                        Ayúdanos a mejorar solamente con dos preguntas haciendo click <a href="http://localhost:3000/NoGarantias">aquí</a>:
+                        En esta ocasión lamentablemente no logramos otorgar la garantía que solicitaste
+                        en razón de la respuesta que te brindamos. Tu opinión es muy importante para
+                        nosotros.
+                        Aunque desafortunadamente por las razones que te explicamos en nuestra
+                        respuesta a tu solicitud, en esta ocasión no pudimos otorgar la garantía del
+                        producto, para nosotros cada contacto con nuestros clientes es muy importante.
+                        Por eso, queremos conocer saber cómo te fuetu experiencia con el servicio de
+                        respuesta a garantías de Tugó. Ayúdanos a mejorar solamente con dos preguntas
+                        haciendo click en <a href="http://localhost:3000/NoGarantias">Responder.</a>
                         <p>Equipo Servicio al Cliente
                         <br>
                         Tugó Diseño para todos.</p>
                         <br></br>
-                        <p>Para más información no dudes en contactarnos a través de nuestro correo
-                        electrónico ventasweb@tugo.com.co</p>
+                        <p>Cualquier inquietud que tengas cuéntanos a través de nuestra página
+                        www.tugo.co en la sección Contáctanos.</p>
                         <p>Gracias por tu tiempo<p>
                         `,
             emails: 'sergioesteban2049@gmail.com'
