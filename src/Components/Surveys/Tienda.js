@@ -27,7 +27,7 @@ class Tienda_Form extends React.Component {
         this.enviarFeedback = this.enviarFeedback.bind(this);
     }
 
-    EnviarMail(){       
+    EnviarMail(){
         Email(this.state.mailOptions).then(response => {
         })
     }
@@ -36,7 +36,7 @@ class Tienda_Form extends React.Component {
         if(e.target.checked){
             let index = e.target.getAttribute('index')
             var mas = (parseInt(index) + 1)
-          this.setState({feedback: mas})  
+          this.setState({feedback: mas})
         }
        const userfeedback = {
             nombre: 'User',
@@ -46,7 +46,7 @@ class Tienda_Form extends React.Component {
         }
 
         this.setState({ userFeedback: userfeedback})
-        
+
         document.getElementById('enviar').removeAttribute('hidden')
     }
 
@@ -62,13 +62,13 @@ class Tienda_Form extends React.Component {
             email = ne.data;
             console.log(email)
         })
-        
+
       FeedBack(this.state.userFeedback).then(response => {
           document.getElementById('argumentos').setAttribute('hidden', 'true')
           document.getElementById('enviar').setAttribute('hidden', 'true')
         })
 
-        
+
         const mailNotification = {
             html: '<p>Notificaciones NPS TUGO Web</p>',
             emails: email
@@ -82,7 +82,7 @@ class Tienda_Form extends React.Component {
         e.preventDefault()
         document.getElementById('argumentos').removeAttribute('hidden')
         this.poll = e.target.textContent
-        this.qualification = parseInt(e.target.value)           
+        this.qualification = parseInt(e.target.value)
         const objeto = {
             idformulario: this.state.id,
             clasificacion: this.qualification
@@ -99,7 +99,7 @@ class Tienda_Form extends React.Component {
 
                         Tu experiencia es muy importante para nosotros. Por eso, queremos saber cómo
                         te fue con tu compra realizada del día por nuestra tienda Tugo Chia.
-                        Ayúdanos a mejorar solamente con dos preguntas haciendo click <a href="http://localhost:3000/Tienda">aquí</a>:
+                        Ayúdanos a mejorar solamente con dos preguntas haciendo click <a href="http://45.33.19.127:3000/Tienda">aquí</a>:
                         <p>Equipo Servicio al Cliente
                         <br>
                         Tugó Diseño para todos.</p>
@@ -126,7 +126,7 @@ class Tienda_Form extends React.Component {
                                 .state
                                 .preguntas
                                 .map((pregunta) => (<p>{pregunta.pregunta}</p>))
-                        }                        
+                        }
                         <ul id="poll">
                             <li>
                                 <Button onClick={this.pollAnswer} value="1">1</Button>
@@ -161,24 +161,24 @@ class Tienda_Form extends React.Component {
                         </ul>
                         <ul id="argumentos">
                             {
-                            this.state.preguntas.map(avisos => { 
+                            this.state.preguntas.map(avisos => {
                                 if(this.poll <= 6)
                                     return(
                                         <p>{avisos.textoClasificacion1}</p>
                                     )
-                            }) 
+                            })
                         }
                         {
                             this.state.preguntas.map(avisos => {
                                 if(this.poll == 7)
                                     return(
                                         <p>{avisos.textoClasificacion2}</p>
-                                    )    
+                                    )
                                 if(this.poll == 8)
                                     return(
                                         <p>{avisos.textoClasificacion2}</p>
                                     )
-                            }) 
+                            })
                         }
                         {
                             this.state.preguntas.map(avisos => {
@@ -186,7 +186,7 @@ class Tienda_Form extends React.Component {
                                     return(
                                         <p>{avisos.textoClasificacion3}</p>
                                     )
-                            }) 
+                            })
                         }
                         {this.state.arguments.map((argument, index) => (
                                     <InputGroup>

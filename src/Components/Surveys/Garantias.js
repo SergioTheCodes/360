@@ -27,7 +27,7 @@ class Garantias extends React.Component {
         this.enviarFeedback = this.enviarFeedback.bind(this);
     }
 
-    EnviarMail(){       
+    EnviarMail(){
         Email(this.state.mailOptions).then(response => {
         })
     }
@@ -36,7 +36,7 @@ class Garantias extends React.Component {
         if(e.target.checked){
             let index = e.target.getAttribute('index')
             var mas = (parseInt(index) + 1)
-          this.setState({feedback: mas})  
+          this.setState({feedback: mas})
         }
        const userfeedback = {
             nombre: 'User',
@@ -46,7 +46,7 @@ class Garantias extends React.Component {
         }
 
         this.setState({ userFeedback: userfeedback})
-        
+
         document.getElementById('enviar').removeAttribute('hidden')
     }
 
@@ -62,13 +62,13 @@ class Garantias extends React.Component {
             email = ne.data;
             console.log(email)
         })
-        
+
       FeedBack(this.state.userFeedback).then(response => {
           document.getElementById('argumentos').setAttribute('hidden', 'true')
           document.getElementById('enviar').setAttribute('hidden', 'true')
         })
 
-        
+
         const mailNotification = {
             html: '<p>Notificaciones NPS TUGO Web</p>',
             emails: email
@@ -82,7 +82,7 @@ class Garantias extends React.Component {
         e.preventDefault()
         document.getElementById('argumentos').removeAttribute('hidden')
         this.poll = e.target.textContent
-        this.qualification = parseInt(e.target.value)           
+        this.qualification = parseInt(e.target.value)
         const objeto = {
             idformulario: this.state.id,
             clasificacion: this.qualification
@@ -94,13 +94,13 @@ class Garantias extends React.Component {
 
     componentDidMount() {
         const options ={
-            subject: '¿Cómo fue tu experiencia con la solicitud de garantías de Tugó?', 
+            subject: '¿Cómo fue tu experiencia con la solicitud de garantías de Tugó?',
             html: `     <p>Hola</p>
 
                         Para nosotros cada contacto con nuestros clientes es muy importante. Por eso,
                         queremos saber cómo te fue tu experiencia con el servicio de respuesta a
                         garantías de Tugó. Ayúdanos a mejorar solamente con dos preguntas haciendo
-                        click en <a href="http://localhost:3000/Garantias">Responder.</a>
+                        click en <a href="/Garantias">Responder.</a>
                         <p>Equipo Servicio al Cliente
                         <br>
                         Tugó Diseño para todos.</p>
@@ -127,7 +127,7 @@ class Garantias extends React.Component {
                                 .state
                                 .preguntas
                                 .map((pregunta) => (<p>{pregunta.pregunta}</p>))
-                        }                        
+                        }
                         <ul id="poll">
                             <li>
                                 <Button onClick={this.pollAnswer} value="1">1</Button>
@@ -162,24 +162,24 @@ class Garantias extends React.Component {
                         </ul>
                         <ul id="argumentos">
                             {
-                            this.state.preguntas.map(avisos => { 
+                            this.state.preguntas.map(avisos => {
                                 if(this.poll <= 6)
                                     return(
                                         <p>{avisos.textoClasificacion1}</p>
                                     )
-                            }) 
+                            })
                         }
                         {
                             this.state.preguntas.map(avisos => {
                                 if(this.poll == 7)
                                     return(
                                         <p>{avisos.textoClasificacion2}</p>
-                                    )    
+                                    )
                                 if(this.poll == 8)
                                     return(
                                         <p>{avisos.textoClasificacion2}</p>
                                     )
-                            }) 
+                            })
                         }
                         {
                             this.state.preguntas.map(avisos => {
@@ -187,7 +187,7 @@ class Garantias extends React.Component {
                                     return(
                                         <p>{avisos.textoClasificacion3}</p>
                                     )
-                            }) 
+                            })
                         }
                         {this.state.arguments.map((argument, index) => (
                                     <InputGroup>
