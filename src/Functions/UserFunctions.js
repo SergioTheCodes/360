@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const Email = mailOptions => {
   return axios
-  .post('http://localhost:5000/nps/send',{
+  .post('http://45.33.19.127:5000/nps/send',{
     html: mailOptions.html,
     subject: mailOptions.subject,
     emails: mailOptions.emails
@@ -13,7 +13,7 @@ export const Email = mailOptions => {
 
 export const FeedBack = userFeedback => {
   return axios
-  .post('http://localhost:5000/nps/feedback',{
+  .post('http://45.33.19.127:5000/nps/feedback',{
     nombre: userFeedback.nombre,
     clasificacion: userFeedback.clasificacion,
     argumento: userFeedback.argumento,
@@ -25,7 +25,7 @@ export const FeedBack = userFeedback => {
 
 export const encuesta = id => {
   return axios
-  .post('http://localhost:5000/nps/encuesta', {
+  .post('http://45.33.19.127:5000/nps/encuesta', {
     id: id
   })
   .then(response => {
@@ -38,7 +38,7 @@ export const encuesta = id => {
 
 export const register = user => {
   return axios
-    .post('http://localhost:5000/nps/register', {
+    .post('http://45.33.19.127:5000/nps/register', {
       email: user.email,
       password: user.password,
       rol: user.rol
@@ -50,9 +50,9 @@ export const register = user => {
 
 export const argumentar = obj => {
   return axios
-  .post('http://localhost:5000/nps/argument', {
+  .post('http://45.33.19.127:5000/nps/argument', {
     idformulario: obj.idformulario,
-    clasificacion: obj.clasificacion    
+    clasificacion: obj.clasificacion
   })
   .then(response => {
     return response.data
@@ -61,7 +61,7 @@ export const argumentar = obj => {
 
 export const login = user => {
   return axios
-    .post('http://localhost:5000/nps/login', {
+    .post('http://45.33.19.127:5000/nps/login', {
       email: user.email,
       password: user.password
     })
@@ -74,21 +74,22 @@ export const login = user => {
     })
 }
 
-export const roles = rol =>{
-  return axios
-  .get('http://localhost:5000/nps/getRoles')
-  .then(response => {
-    return response.data
-  });
-}
+export const roles = async () =>{
+  const roles = await axios
+  .get('http://45.33.19.127:5000/nps/getRoles')
+      .then(value => {
+        return value.data.status
+      });
+  return roles;
+};
 
 
 export const SummaryNPS = req => {
   return axios
-  .get('http://localhost:5000/nps/summarynps',
+  .get('http://45.33.19.127:5000/nps/summarynps',
   ).then(response => {
     return response.data
   });
 
-  
+
 }

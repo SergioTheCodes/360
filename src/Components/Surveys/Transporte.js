@@ -99,7 +99,7 @@ class Transporte extends React.Component {
 
                         Para nosotros cada contacto con nuestros clientes es muy importante. Por eso,
                         queremos saber cómo te fue con el servicio de entrega del producto. Ayúdanos a
-                        mejorar solamente con dos preguntas haciendo click <a href="http://45.33.19.127:3000/Transporte">aquí:</a>
+                        mejorar solamente con dos preguntas haciendo click <a href="http://tugo.harcorp.com.co/Transporte">aquí:</a>
                         <p>Equipo Servicio al Cliente
                         <br>
                         Tugó Diseño para todos.</p>

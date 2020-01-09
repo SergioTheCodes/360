@@ -104,7 +104,7 @@ class Web_Form extends React.Component {
 
                         Tu experiencia es muy importante para nosotros. Por eso, queremos saber cómo
                         te fue con tu compra realizada del día por nuestra tienda online tugo.co.
-                        Ayúdanos a mejorar solamente con dos preguntas haciendo click <a href="http://45.33.19.127:3000/Web">aquí</a>:
+                        Ayúdanos a mejorar solamente con dos preguntas haciendo click <a href="http://tugo.harcorp.com.co/Web">aquí</a>:
                         <p>Equipo Servicio al Cliente
                         <br>
                         Tugó Diseño para todos.</p>
