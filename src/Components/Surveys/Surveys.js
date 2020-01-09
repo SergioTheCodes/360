@@ -19,7 +19,7 @@ import Box from '@material-ui/core/Box';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
-  
+
     return (
       <Typography
         component="div"
@@ -33,36 +33,35 @@ function TabPanel(props) {
       </Typography>
     );
   }
-  
+
   TabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.any.isRequired,
     value: PropTypes.any.isRequired,
   };
-  
+
   function a11yProps(index) {
     return {
       id: `full-width-tab-${index}`,
       'aria-controls': `full-width-tabpanel-${index}`,
     };
   }
-  
+
   const useStyles = makeStyles(theme => ({
     root: {
       flexGrow: 1,
       backgroundColor: theme.palette.background.paper,
-      width: 500,
     },
     tabs: {
       borderRight: `1px solid ${theme.palette.divider}`,
     },
   }));
-  
+
   export default function FullWidthTabs() {
     const classes = useStyles();
     const theme = useTheme();
     const [value, setValue] = React.useState(0);
-  
+
     const handleChange = (event, newValue) => {
       setValue(newValue);
     };
@@ -70,7 +69,7 @@ function TabPanel(props) {
     const handleChangeIndex = index => {
       setValue(index)
     }
-    
+
     return (
       <div>
         <MenuRoll />

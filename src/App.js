@@ -28,7 +28,7 @@ function App(props) {
             <div className="App">
                 <NavBar></NavBar>
                 <Route exact="exact" path="/Dashboard" component={Dashboard}/>
-                <div className="container">
+                <div className="fluid-container">
                     <Route exact="exact" path="/SignUp" component={SignUp}/>
                     <Route exact="exact" path="/Login" component={Login}/>
                     <Route exact="exact" path="/Surveys" component={Surveys}/>
@@ -39,9 +39,9 @@ function App(props) {
                     <Route exact="exact" path="/Tienda" component={Tienda}/>
                     <Route exact="exact" path="/Transporte" component={Transporte}/>
                     <Route exact="exact" path="/TransporteyArmado" component={Transporte_y_Armado}/>
-                    
+
                 </div>
-                <Route exact="exact" path="/" component={Home}/>                
+                <Route exact="exact" path="/" component={Home}/>
             </div>
         </Router>
     );
