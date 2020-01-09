@@ -105,7 +105,7 @@ class NoGarantias extends React.Component {
                         producto, para nosotros cada contacto con nuestros clientes es muy importante.
                         Por eso, queremos conocer saber cómo te fuetu experiencia con el servicio de
                         respuesta a garantías de Tugó. Ayúdanos a mejorar solamente con dos preguntas
-                        haciendo click en <a href="http://45.33.19.127:3000/NoGarantias">Responder.</a>
+                        haciendo click en <a href="http://tugo.harcorp.com.co/NoGarantias">Responder.</a>
                         <p>Equipo Servicio al Cliente
                         <br>
                         Tugó Diseño para todos.</p>

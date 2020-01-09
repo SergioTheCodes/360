@@ -9,9 +9,10 @@ class SignUp extends React.Component{
         this.state = {
             email: '',
             password: '',
-            rol: roles
-        }
-        console.log(this.state.rol)
+            rol: '',
+            roles: [],
+        };
+        roles().then(roles => this.setState({roles}));
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
     }
@@ -27,7 +28,7 @@ class SignUp extends React.Component{
             email: this.state.email,
             password: this.state.password,
             rol: this.state.rol
-        }
+        };
         register(user).then(res => {
                 this.props.history.push(`/Login`)
         })
@@ -42,8 +43,8 @@ class SignUp extends React.Component{
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" placeholder="Enter email" name="email" value={this.state.email} onChange={this.onChange}/>
                     </Form.Group>
-                    <select>
-                        <option value={this.state.rol}></option>
+                    <select name={this.state.rol}>
+                        {this.state.roles.map(rol => <option key={rol.rol} value={rol.rol}>{rol.rol}</option>)}
                     </select>
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
